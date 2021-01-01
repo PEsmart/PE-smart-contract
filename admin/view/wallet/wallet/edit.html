@@ -1,0 +1,84 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="name" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input name="row[id]" type="hidden" value="{$row.id}">
+            <input readonly id="name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="typename" class="control-label col-xs-12 col-sm-2">{:__('Typename')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="typename" data-rule="required" class="form-control" name="row[typename]" type="text" value="{$row.typename}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="number" class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="number" data-rule="required" class="form-control" name="row[number]" type="text" value="{$row.number}">
+        </div>
+        <!--<span class="unit">%</span>-->
+    </div>
+
+    <div class="form-group">
+        <label for="credit5" class="control-label col-xs-12 col-sm-2">{:__('Credit5')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="credit5" data-rule="required" class="form-control" name="row[credit5]" type="text" value="{$row.credit5}">
+        </div>
+        <span class="unit">元</span>
+    </div>
+
+    <div class="form-group">
+        <label for="address" class="control-label col-xs-12 col-sm-2">{:__('Address')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="address" data-rule="required" class="form-control" name="row[address]" type="text" value="{$row.address}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="createtime" class="control-label col-xs-12 col-sm-2">{:__('Createtime')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="createtime" data-rule="required" class="form-control" name="row[createtime]" type="text" value="{$row.createtime}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="modifytime" class="control-label col-xs-12 col-sm-2">{:__('Modifytime')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="modifytime" data-rule="required" class="form-control" name="row[modifytime]" type="text" value="{$row.modifytime}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[state]', ['-1'=>__('拒绝'), '0'=>__('待审批'), '1'=>__('同意')], $row['state'])}
+        </div>
+    </div>
+
+    <!--//钱包地址、用户名、提取数量、法币、类型、申请时间、操作-->
+
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+
+
+

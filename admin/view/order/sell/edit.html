@@ -1,0 +1,55 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group" style="display: none;">
+        <label for="periods" class="control-label col-xs-12 col-sm-2">{:__('期数')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="periods" data-rule="required" class="form-control" name="row[periods]" type="text" value="{$row.periods}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="username" class="control-label col-xs-12 col-sm-2">{:__('用户编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="username" data-rule="required" class="form-control" name="row[username]" type="text" value="{$row.username}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="num" class="control-label col-xs-12 col-sm-2">{:__('出售数量')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="num" data-rule="required" class="form-control" name="row[num]" type="text" value="{$row.num}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('等级')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="level" data-rule="required" class="form-control" name="row[level]" type="text" value="{$row.level}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['0'=>__('审核中'), '1'=>__('同意'), '2'=>__('拒绝')], $row['status'])}
+        </div>
+    </div>
+
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+
+

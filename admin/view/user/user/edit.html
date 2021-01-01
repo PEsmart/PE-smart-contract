@@ -1,0 +1,156 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="c-realname" class="control-label col-xs-12 col-sm-2">{:__('Realname')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-realname"  class="form-control" name="row[realname]" type="text" value="{$row.detail.realname}">
+        </div>
+    </div>
+    <input type="hidden" name="row[id]" value="{$row.id}">
+    <div class="form-group">
+        <label for="c-credittype" class="control-label col-xs-12 col-sm-2">{:__('Credittype')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-credittype"  class="form-control" name="row[credittype]" type="text" value="身份证" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-creditid" class="control-label col-xs-12 col-sm-2">{:__('Creditid')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-creditid"  class="form-control" name="row[creditid]" type="text" value="{$row.detail.creditid}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-wechatact" class="control-label col-xs-12 col-sm-2">{:__('Wechatact')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-wechatact" class="form-control" name="row[wechatact]" type="text" value="{$row.detail.wechatact}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="wechat_url" class="control-label col-xs-12 col-sm-2">{:__('WechatactImg')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="wechat_url" data-rule="" class="form-control" size="50" name="row[wechat_url]" type="text" value="{$row.detail.wechat_url}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="wechat_url" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="wechat_url" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="wechat_url"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="c-alipayact" class="control-label col-xs-12 col-sm-2">{:__('Alipayact')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-alipayact" class="form-control" name="row[alipayact]" type="text" value="{$row.detail.alipayact}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="alipay_url" class="control-label col-xs-12 col-sm-2">{:__('AlipayactImg')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="alipay_url" data-rule="" class="form-control" size="50" name="row[alipay_url]" type="text" value="{$row.detail.alipay_url}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-qrcode" class="btn btn-danger plupload" data-input-id="alipay_url" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-qrcode"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-qrcode" class="btn btn-primary fachoose" data-input-id="alipay_url" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="alipay_url"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-qrcode"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-bankact" class="control-label col-xs-12 col-sm-2">{:__('Bankact')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-bankact"  class="form-control" name="row[bankact]" type="text" value="{$row.detail.bankact}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-account" class="control-label col-xs-12 col-sm-2">{:__('Account')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-account" class="form-control" name="row[account]" type="text" value="{$row.detail.account}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-bank" class="control-label col-xs-12 col-sm-2">{:__('bank')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-bank"  class="form-control" name="row[bank]" type="text" value="{$row.detail.bank}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-bankname" class="control-label col-xs-12 col-sm-2">{:__('Bankname')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-bankname"  class="form-control" name="row[bankname]" type="text" value="{$row.detail.bankname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-bankphone" class="control-label col-xs-12 col-sm-2">{:__('Bankphone')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-bankphone"  class="form-control" name="row[bankphone]" type="text" value="{$row.detail.bankphone}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('会员等级')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <select name="row[level]" class="form-control">
+                {volist name='levels' id='val'}
+                    <option value="{$val['level']}" {if $row.level == $val['level']}selected{/if}>{$val['levelname']}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="identity_level" class="control-label col-xs-12 col-sm-2">{:__('身份等级')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <select name="row[identity_level]" class="form-control">
+                {volist name='identity' id='val'}
+                <option value="{$val['level']}" {if $row.identity_level == $val['level']}selected{/if}>{$val['levelname']}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label for="c-paypwd" class="control-label col-xs-12 col-sm-2">{:__('Paypwd')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-paypwd" data-rule="required" class="form-control" name="row[paypwd]" type="text" value="{$row.detail.paypwd}">
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label for="c-password" class="control-label col-xs-12 col-sm-2">{:__('Password')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-password" data-rule="" class="form-control" name="row[password]" type="text" value="" placeholder="留空表示不修改">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-paypwd" class="control-label col-xs-12 col-sm-2">{:__('Paypwd')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="c-paypwd" data-rule="" class="form-control" name="row[paypwd]" type="text" value="" placeholder="留空表示不修改">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Isreal')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[isreal]', ['1'=>__('Isrealy'), '0'=>__('Isrealn')], $row['detail']['isreal'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('row[status]', ['normal'=>__('Normal'), 'hidden'=>__('hidden')], $row['status'])}
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

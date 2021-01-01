@@ -1,0 +1,30 @@
+<form style="font-size:18px;" id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="./upgrade">
+    {volist  name="levels" id="val"}
+         {if $val['level']!=1}
+        <div class="form-group form-control" style="height: 48px;padding-top: 10px;font-size:14px;" >
+            <div class="col-xs-12 col-sm-12">
+                <span style="display: inline-block;width:180px;text-align: right;"><b>{$val['levelname']}：</b></span>
+                <span>账户累积达到</span>
+                <input type="number" style="padding-left: 5px;" name="levelup[zhlj_{$val['level']}]" value="{:isset($levelup['zhlj_'.$val['level']])?$levelup['zhlj_'.$val['level']]:0}" />
+                <span>{:__(config('site.credit1_text'))}，且累积推广收益</span>
+                <input type="number" style="padding-left: 5px;" name="levelup[sylj_{$val['level']}]" value="{:isset($levelup['sylj_'.$val['level']])?$levelup['sylj_'.$val['level']]:0}" />
+                <span>{:__(config('site.credit3_text'))},且直推</span>
+                <input type="number" style="padding-left: 5px;" name="levelup[zt_{$val['level']}]" value="{:isset($levelup['zt_'.$val['level']])?$levelup['zt_'.$val['level']]:0}" />
+                <span>个会员且累积充值</span>
+                <input type="number" style="padding-left: 5px;" name="levelup[czlj_{$val['level']}]" value="{:isset($levelup['czlj_'.$val['level']])?$levelup['czlj_'.$val['level']]:0}" />
+                <span>{:__(config('site.credit1_text'))}</span>
+
+            </div>
+        </div>
+        {/if}
+    {/volist}
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

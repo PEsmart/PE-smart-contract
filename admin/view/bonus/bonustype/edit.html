@@ -1,0 +1,241 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {if $row['bkey']=='sxf'}
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="bname" data-rule="required" class="form-control" name="bname" type="text" value="{$row.bname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Fee (%)')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="data[fee]" data-rule="required" class="form-control" name="data[fee]" type="number" value="{$data.fee}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('open', ['1'=>__('open'), '0'=>__('close')])}
+        </div>
+    </div>
+    {/if}
+
+    {if $row['bkey']=='gwj'}
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="bname" data-rule="required" class="form-control" name="bname" type="text" value="{$row.bname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uprice" class="control-label col-xs-12 col-sm-2">{:__('Bonus Setting')}:</label><br><br>
+        <div id="container" style="margin-left: 18%">
+            <button type="button" class="btn btn-success" id="adddetail" >{:__('Add')}</button>
+            <button type="button" class="btn btn-danger" id="deldetail">{:__('Del')}</button><br><br>
+            {foreach name="data.rank" item='v'}
+            <div id="box" style="display: flex;">
+                <span class="tt">{:__('Algebra')}</span><input id="rank[]" class="form-control ipt" data-rule="required" attr="rand" name="data[rank][]" type="number" value="{$v}">
+                <span class="tt">{:__('Rate')}(%)</span><input id="rate[]" class="form-control ipt" data-rule="required" name="data[rate][]" type="number" value="{$data['rate'][$key]}">
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('open', ['1'=>__('open'), '0'=>__('close')])}
+        </div>
+    </div>
+    {/if}
+
+    <!--社群算力 start-->
+    {if $row['bkey']=='sqsl'}
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="bname" data-rule="required" class="form-control" name="bname" type="text" value="{$row.bname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <!--<label for="zt" style="display: none;" class="control-label">直推人数</label>-->
+        <!--<label for="ds" style="display: none;" class="control-label">推荐代数</label>-->
+        <!--<label for="bl" style="display: none;" class="control-label">比例</label>-->
+        <label for="container" class="control-label col-xs-12 col-sm-2">{:__('Bonus Setting')}:</label><br><br>
+        <div id="container" style="margin-left: 18%">
+            <button type="button" class="btn btn-success" id="adddetail" >{:__('Add')}</button>
+            <button type="button" class="btn btn-danger" id="deldetail">{:__('Del')}</button><br><br>
+            <span style="color:red;">注意：推荐代数不能重复，如果出现重复那么后面一行的数据会覆盖前面一行的数据</span><br/><br/>
+            {if $data}
+            {foreach name="data" item='v'}
+            <div id="box" style="display: flex;">
+                    <span class="tt ">直推V1及以上级别</span><input class="form-control ipt" data-rule="required" attr="rand" name="data[zt][]" type="number" value="{$v['zt']}">
+                    <span class="tt">人,推荐代数</span><input class="form-control ipt" data-rule="required" name="data[ds][]" type="number" value="{$v['ds']}">
+                    <span class="tt">代,比例</span><input  class="form-control ipt" data-rule="required" name="data[bl][]" type="number" value="{$v['bl']}">
+                    <span class="tt">%</span>
+                </div>
+            {/foreach}
+            {else}
+            <div id="box" style="display: flex;">
+                    <span class="tt">直推V1及以上级别</span><input id="zt" class="form-control ipt" data-rule="required;zt" attr="rand" name="data[zt][]" type="number" value="">
+                    <span class="tt">人,推荐代数</span><input id="ds" class="form-control ipt" data-rule="required;ds" name="data[ds][]" type="number" value="">
+                    <span class="tt">代,比例</span><input id="bl" class="form-control ipt" data-rule="required;bl" name="data[bl][]" type="number" value="">
+                    <span class="tt">%</span>
+                </div>
+            {/if}
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('open', ['1'=>__('open'), '0'=>__('close')],$row['isopen'])}
+        </div>
+    </div>-->
+    {/if}
+    <!--社群算力 end-->
+
+    <!--节点奖励 start-->
+    {if $row['bkey']=="jdjl"}
+    <input name="bkey" type="hidden" value="{$row.bkey}">
+    <input name="bname" type="hidden" value="{$row.bname}">
+    <label for="container" class="control-label col-xs-12 col-sm-2">节点奖励设置：</label><br><br>
+    {foreach name="identity_list" item='v'}
+    <div class="form-group">
+            <label for="" class="control-label col-xs-12 col-sm-2">{$v['levelname']} 获奖比例(%)</label>
+            <div class="col-xs-12 col-sm-8">
+                <input data-rule="required" class="form-control" name="data[{$v['level']}]" type="number" min="0" value="{:isset($data[$v['level']]) ? $data[$v['level']] : 0}">
+            </div>
+        </div>
+    {/foreach}
+    {/if}
+    <!--节点奖励 end-->
+
+
+    <!--同级奖-fc start-->
+    {if $row['bkey']=="tjj_fc"}
+        <input name="bkey" type="hidden" value="{$row.bkey}">
+        <input name="bname" type="hidden" value="{$row.bname}">
+        <label for="container" class="control-label col-xs-12 col-sm-3">同级奖-FC设置：</label><br><br>
+        {foreach name="identity_list" item='v'}
+        <div class="form-group">
+            <label for="" class="control-label col-xs-12 col-sm-3">{$v['levelname']} 获奖比例(%)</label>
+            <div class="col-xs-12 col-sm-8">
+                <input data-rule="required" class="form-control" name="data[{$v['level']}]" type="number" min="0" value="{:isset($data[$v['level']]) ? $data[$v['level']] : 0}">
+            </div>
+        </div>
+        {/foreach}
+    {/if}
+    <!--同级奖-fc  end-->
+    <!--同级奖-fc start-->
+    {if $row['bkey']=="tjj_usdt"}
+        <input name="bkey" type="hidden" value="{$row.bkey}">
+        <input name="bname" type="hidden" value="{$row.bname}">
+        <label for="container" class="control-label col-xs-12 col-sm-3">同级奖-USDT设置：</label><br><br>
+        {foreach name="identity_list" item='v'}
+        <div class="form-group">
+            <label for="" class="control-label col-xs-12 col-sm-3">{$v['levelname']} 获奖比例(%)</label>
+            <div class="col-xs-12 col-sm-8">
+                <input data-rule="required" class="form-control" name="data[{$v['level']}]" type="number" min="0" value="{:isset($data[$v['level']]) ? $data[$v['level']] : 0}">
+            </div>
+        </div>
+        {/foreach}
+    {/if}
+    <!--同级奖-fc  end-->
+
+
+    {if $row['bkey']=='qdf'}
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="bname" data-rule="required" class="form-control" name="bname" type="text" value="{$row.bname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Deduct expenses')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            CSDA:　<input id="data[credit1]" data-rule="required"  name="data[credit1]" type="number" value="{$data.credit1}">
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('open', ['1'=>__('open'), '0'=>__('close')])}
+        </div>
+    </div>
+    {/if}
+
+    {if $row['bkey']=='jjr'}
+    <div class="form-group">
+        <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+        <label for="bname" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="bname" data-rule="required" class="form-control" name="bname" type="text" value="{$row.bname}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:build_radios('open', ['1'=>__('open'), '0'=>__('close')])}
+        </div>
+    </div>
+    {/if}
+
+    {if $row['bkey']=="ztj"}
+    <input name="bkey" type="text" value="{$row.bkey}" style="display: none">
+    <input name="bname" type="text" value="{$row.bname}" style="display: none">
+
+    {foreach name="level_list" item='v'}
+    <div class="form-group">
+        <label for="a" class="control-label col-xs-12 col-sm-2" {if $key==0} style="display: none"{/if}>{$v.levelname}获奖百分比（%）</label>
+        <div class="col-xs-12 col-sm-2">
+            <input id="rate[]" data-rule="required" placeholder="" type="number" class="form-control" {if $key==0} style="display: none" {/if} name="data[rate][]" value="{$data['rate'][$key]}">
+            <input id="level[]" data-rule="required" placeholder="" type="number" class="form-control" style="display: none"  name="data[level][]" value="{$v['level']}">
+        </div>
+    </div>
+    {/foreach}
+    {/if}
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+
+<script src="/assets/js/tjnet/jquery-1.7.2.js"></script>
+<script src="/assets/js/tjnet/jquery-ui-1.10.3.min.js"></script>
+<script>
+    //简单的添加删除
+    $("#adddetail").click(function () {
+        clone=$("#box").clone();
+        $(clone).children('input').val('');
+//        $(clone).children('input[attr="rand"]').val( $("#container").children('div').length +1 )
+        $("#container").append(clone)
+    })
+    $("#deldetail").click(function(){
+        let len=$("#container").children('div').length -1;
+        if (len==0)return;
+        $("#container").children('div').eq(len).remove()
+    })
+</script>
+
+<style>
+    .ipt{
+        width: 150px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    .tt{
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 5px;
+    }
+</style>

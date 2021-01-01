@@ -1,0 +1,67 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="name" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="image" class="control-label col-xs-12 col-sm-2">{:__('Image')}:</label>
+        <div class="col-xs-12 col-sm-6">
+            <input id="image" data-rule="required" class="form-control" name="row[image]" type="text" value="{$row.image}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('Price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="price" data-rule="required" class="form-control" name="row[price]" type="text" value="{$row.price}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="power" class="control-label col-xs-12 col-sm-2">{:__('Power')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="power" data-rule="required" class="form-control" name="row[power]" type="text" value="{$row.power}" readonly>
+        </div><span class="unit">%</span>
+    </div>
+    <div class="form-group">
+        <label for="life" class="control-label col-xs-12 col-sm-2">{:__('Life')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="life" data-rule="required" class="form-control" name="row[life]" type="text" value="{$row.life}" readonly>
+        </div><span class="unit">天</span>
+    </div>
+    <div class="form-group">
+        <label for="nissan" class="control-label col-xs-12 col-sm-2">{:__('Nissan')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="nissan" data-rule="required" class="form-control" name="row[nissan]" type="text" value="{$row.nissan}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="radio" name="row[status]" value="normal" disabled <?php if(__($row['status']) == __('Normal')) echo 'checked'; ?> >   {:__('Normal')}
+            <input type="radio" name="row[status]" value="hidden" disabled <?php if(__($row['status']) == __('Hidden')) echo 'checked'; ?> >   {:__('Hidden')}
+        </div>
+    </div>
+
+    <div class="hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="reset" class="btn btn-primary btn-embossed btn-close" onclick="Layer.closeAll();">{:__('Close')}</button>
+        </div>
+    </div>
+</form>
+
+

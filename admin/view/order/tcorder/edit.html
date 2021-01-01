@@ -1,0 +1,73 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="tcid" class="control-label col-xs-12 col-sm-2">{:__('tcid')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="tcid" data-rule="required" class="form-control" name="row[tcid]" type="text" value="{$row.tcid}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="uid" class="control-label col-xs-12 col-sm-2">{:__('uid')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="uid" data-rule="required" class="form-control" name="row[uid]" type="text" value="{$row.uid}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="price" data-rule="required" class="form-control" name="row[price]" type="text" value="{$row.price}">
+        </div>
+        <span class="unit">{:config('site.credit2_text')}</span>
+    </div>
+    <div class="form-group">
+        <label for="price_d" class="control-label col-xs-12 col-sm-2">{:__('price_d')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="price_d" data-rule="required" class="form-control" name="row[price_d]" type="text" value="{$row.price_d}">
+        </div>
+        <span class="unit">{:config('site.credit2_text')}</span>
+    </div>
+
+    <div class="form-group">
+        <label for="days" class="control-label col-xs-12 col-sm-2">{:__('days')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="days" data-rule="required" class="form-control" name="row[days]" type="text" value="{$row.days}">
+        </div>
+        <span class="unit">天</span>
+    </div>
+    <div class="form-group">
+        <label for="days_d" class="control-label col-xs-12 col-sm-2">{:__('days_d')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="days_d" data-rule="required" class="form-control" name="row[days_d]" type="text" value="{$row.days_d}">
+        </div>
+        <span class="unit">天</span>
+    </div>
+
+    <div class="form-group">
+        <label for="money" class="control-label col-xs-12 col-sm-2">{:__('money')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="money" data-rule="required" class="form-control" name="row[money]" type="text" value="{$row.money}">
+        </div>
+        <span class="unit">{:config('site.credit2_text')}</span>
+    </div>
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+
+

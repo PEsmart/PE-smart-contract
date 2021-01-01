@@ -1,0 +1,62 @@
+<form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="username" class="control-label col-xs-12 col-sm-2">{:__('username')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            <input type="text" class="form-control" id="username" name="row[username]" value="{$row['username']}" data-rule="required;username" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type" class="control-label col-xs-12 col-sm-2">{:__('type')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            <input type="text" class="form-control" id="type" name="row[type]" value="{$row['type']}" data-rule="required;type" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="num" class="control-label col-xs-12 col-sm-2">{:__('num')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            <input type="text" class="form-control" id="num" name="row[num]" value="{$row['num']}" data-rule="required;num" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="remark" class="control-label col-xs-12 col-sm-2">{:__('remark')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            <textarea class="form-control" rows="5" id="remark" name="row[remark]" data-rule="required;remark" >{$row['remark']}</textarea>
+        </div>
+    </div>
+
+
+    <!--上传图片-->
+    <!--<div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('upimgs')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="" class="form-control" size="50" name="row[images]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span>
+                        <button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button>
+                    </span>
+                    <span>
+                        <button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Select')}</button>
+                    </span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>-->
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('status')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['0'=>__('untreated'), '1'=>__('processed')])}
+        </div>
+    </div>-->
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

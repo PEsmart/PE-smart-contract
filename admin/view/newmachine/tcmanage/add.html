@@ -1,0 +1,163 @@
+<style>
+    #unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="name_cn" class="control-label col-xs-12 col-sm-2">{:__('name_cn')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name_cn" data-rule="required" class="form-control" name="row[name_cn]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name_en" class="control-label col-xs-12 col-sm-2">{:__('name_en')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name_en" data-rule="required" class="form-control" name="row[name_en]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('level')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="level" data-rule="required" class="form-control" name="row[level]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="price" data-rule="required" class="form-control" name="row[price]" type="text" min="0" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="days" class="control-label col-xs-12 col-sm-2">{:__('days')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="days" data-rule="required" class="form-control" name="row[days]" type="number" value="" min="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="per2" class="control-label col-xs-12 col-sm-2">{:__('日收益百分比(%)')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="per2" data-rule="required" class="form-control" name="row[per2]" type="number" value="" min="0">
+        </div>
+        <span id="unit">显示使用不做计算</span>
+    </div>
+    <div class="form-group">
+        <label for="per3" class="control-label col-xs-12 col-sm-2">{:__('日收益百分比(%)')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="per3" data-rule="required" class="form-control" name="row[per3]" type="number" value="" min="0">
+        </div>
+        <span id="unit">显示使用不做计算</span>
+    </div>
+    <div class="form-group">
+        <label for="per" class="control-label col-xs-12 col-sm-2">{:__('per')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="per" data-rule="required" class="form-control" name="row[per]" type="number" value="" min="0">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('是否推荐')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[is_recommend]', ['0'=>__('否'), '1'=>__('是')])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('图片')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="" class="form-control" size="50" name="row[image]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+    <!--套餐介绍-->
+    <div class="form-group">
+        <label for="introduce" class="control-label col-xs-12 col-sm-2">{:__('introduce')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="introduce" name="row[introduce]" data-rule="" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="introduce_en" class="control-label col-xs-12 col-sm-2">{:__('introduce_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="introduce_en" name="row[introduce_en]" data-rule="" ></textarea>
+        </div>
+    </div>
+
+    <!--合约说明-->
+    <div class="form-group">
+        <label for="explain" class="control-label col-xs-12 col-sm-2">{:__('explain')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="explain" name="row[explain]" data-rule="" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="explain_en" class="control-label col-xs-12 col-sm-2">{:__('explain_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="explain_en" name="row[explain_en]" data-rule="" ></textarea>
+        </div>
+    </div>
+
+    <!--风险介绍-->
+    <div class="form-group">
+        <label for="risk" class="control-label col-xs-12 col-sm-2">{:__('risk')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="risk" name="row[risk]" data-rule="" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="risk_en" class="control-label col-xs-12 col-sm-2">{:__('risk_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="risk_en" name="row[risk_en]" data-rule="" ></textarea>
+        </div>
+    </div>
+
+    <!--免责申明-->
+    <div class="form-group">
+        <label for="affirming" class="control-label col-xs-12 col-sm-2">{:__('affirming')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="affirming" name="row[affirming]" data-rule="" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="affirming_en" class="control-label col-xs-12 col-sm-2">{:__('affirming_en')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea class="form-control editor" rows="10" id="affirming_en" name="row[affirming_en]" data-rule="" ></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+
+<script src="/assets/js/tjnet/jquery-1.7.2.js"></script>
+<script src="/assets/js/tjnet/jquery-ui-1.10.3.min.js"></script>
+<script>
+    //简单的添加删除
+    $("#adddetail").click(function () {
+        clone=$("#box").clone();
+        $(clone).children('input').val('')
+        $("#container").append(clone)
+    })
+    $("#deldetail").click(function(){
+        let len=$("#container").children('div').length -1;
+        if (len==0)return;
+        $("#container").children('div').eq(len).remove()
+    })
+</script>

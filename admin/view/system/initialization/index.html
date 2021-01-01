@@ -1,0 +1,40 @@
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <a href="javascript:;" id="system_init" class="btn btn-danger btn-del">{:__('system initialization')}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {if $app_debug}
+    <div class="panel-heading"><div class="panel-lead"><em>定时任务</em>测试环境使用 线上自动去掉 </div></div>
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <a href="{:url('system/initialization/insql')}" target="_blank" class="btn btn-success"><i class="fa fa-leaf"></i>
+                        {:__('收益数据入库')}</a>
+                    <a href="{:url('system/initialization/minutetask')}" target="_blank" class="btn btn-warning"><i class="fa fa-leaf"></i>
+                        {:__('获取交易结果')}</a>
+                    <a href="{:url('system/initialization/secondtask')}" target="_blank" class="btn btn-info"><i class="fa fa-leaf"></i>
+                        {:__('静态收益')}</a>
+                    <a href="{:url('system/initialization/uninvprize')}" target="_blank" class="btn btn-info"><i class="fa fa-leaf"></i>
+                        {:__('不提款奖励')}</a>
+                    <!--<a href="{:url('system/initialization/cancel_order')}" target="_blank" class="btn btn-success"><i class="fa fa-leaf"></i>-->
+                    <!--{:__('取消未付款订单')}</a>-->
+                    <a href="{:url('system/initialization/jackpot')}" target="_blank" class="btn btn-info"><i class="fa fa-leaf"></i>
+                        {:__('合约质押总资金池奖励')}</a>
+                    <a href="{:url('system/initialization/clearday')}" target="_self" class="btn btn-info"><i class="fa fa-leaf"></i>
+                        {:__('清空本日收益累积')}</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {/if}
+</div>

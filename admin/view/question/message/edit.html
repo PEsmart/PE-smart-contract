@@ -1,0 +1,66 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input name="row[id]" type="hidden" value="{$row.id}">
+            <input name="row[status]" type="hidden" value="{$row.status}">
+            <input  readonly id="c-username" class="form-control" name="row[username]" type="text" value="{$row.username}">
+        </div>
+    </div>
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input  readonly id="c-content" class="form-control" name="row[content]" type="text" value="{$row.content}">-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea readonly class="form-control editor" rows="15" id="content" name="row[content]" data-rule="required;contents" >{$row['content']}</textarea>
+        </div>
+    </div>
+
+
+       <div class="form-group">
+        <label for="reply_content" class="control-label col-xs-12 col-sm-2">{:__('Reply_content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea  class="form-control editor" rows="15" id="reply_content" name="row[reply_content]" data-rule="required;contents" >{$row.reply_content}</textarea>
+        </div>
+    </div>
+
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-12 col-sm-2">{:__('Reply_content')}:</label>-->
+        <!--<div class="col-xs-12 col-sm-8">-->
+            <!--<input id="c-reply_content" class="form-control" name="row[reply_content]" type="text" value="{$row.reply_content}">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<label  class="control-label col-xs-12 col-sm-2">{:__('状态')}:</label>-->
+        <!--<div  class="col-xs-12 col-sm-7">-->
+            <!--{:build_radios('row[status]', ['0'=>__('未回复'), '1'=>__('已回复')], $row['status'])}-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{$row.create_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Reply_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-reply_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[reply_time]" type="text" value="{$row.reply_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

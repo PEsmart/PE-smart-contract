@@ -1,0 +1,181 @@
+
+<!--<link href="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/dropdown-master/jquery.dropdown.min.css" rel="stylesheet">
+<script src="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/dropdown-master/jquery.dropdown.js"></script>
+<script src="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/vis-4.20.1/vis.min.js"></script>-->
+<!--<link rel="stylesheet" href="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/vis-4.20.1/vis.min.css">
+<link rel="stylesheet" href="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="{php echo EWEI_SHOPV2_LOCAL}plugin/dsell/static/css/diagram.css">
+<script src="../../../../../../../web/resource/js/lib/jquery-ui-1.10.3.min.js"></script>-->
+<link rel="stylesheet" href="/assets/css/tjnet/vis.min.css">
+<link rel="stylesheet" href="/assets/css/tjnet/jquery-ui.min.css">
+<link rel="stylesheet" href="/assets/css/tjnet/diagram.css">
+<script src="/assets/js/tjnet/jquery-1.7.2.js"></script>
+<script src="/assets/js/tjnet/jquery-ui-1.10.3.min.js"></script>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+</div>
+<div class="panel-body">
+    <div class="page-content">
+        <div class="page-toolbar row m-b-sm m-t-sm" style="min-width:1250px;">
+            <div style="height:45px;line-height:40px;position:relative;">
+                <label class="col-sm-2 control-label" style="width:100px;padding:0px;">{:__('display mode')}</label>
+                <select id="displaymode"  style="width:150px;padding:0px;height:25px;" autocomplete="off" onchange="ondisplay(this.value);">
+                    <option value="UD">{:__('From top to bottom')}</option>
+                    <option value="DU">{:__('From bottom to top')}</option>
+                    <option value="LR">{:__('From left to right')}</option>
+                    <option value="RL">{:__('From right to left')}</option>
+                    <option value="FREE">{:__('Free mode')}</option>
+                </select>
+                <input type="text" style="position:absolute;left:250px; top:5px;width:200px;" class="form-control input-sm"  id="keyword" value="" placeholder="可搜索定位昵称/姓名/手机号/ID"/>
+                <label class="col-sm-2 control-label" style="position:absolute;right:625px; top:-3px;width:auto;"><span id="pagename"></span>直推的会员总共 <span id="allnums"></span>个，分 <span id="allpage"></span> 页</label>
+                <input type="text" style="position:absolute;right:575px; top:1px;width:50px;" class="form-control input-sm"  id="tpage" value="" placeholder="页数"/>
+                <input value="跳转" class="btn btn-primary" type="button" onClick="changepage(2);" style="position:absolute;right:512px;">
+                <input value="上一页" class="btn btn-primary" type="button" onClick="changepage(-1);" id="btnpre" style="position:absolute;right:432px;"disabled="true">
+                <input value="下一页" class="btn btn-primary" type="button" onClick="changepage(1);" id="btnnext" style="position:absolute;right:355px;"disabled="true">
+                <input value="隐藏注册按钮" class="btn btn-primary" id="btnshowreg" style="position:absolute;right:242px;" type="button" onClick="hidereg(this);">
+                <input id="btnEdit" style="position:absolute;right:155px;" value="编辑关系" class="btn btn-primary" type="button" onClick="doEdit();">
+                <input value="上一层" class="btn btn-primary" type="button" onClick="loadparent();" id="btnparent" style="position:absolute;right:80px;" {if $pid == 0}disabled="true"{/if}>
+                <input id="btngotop" style="position:absolute;right:5px;" value="回顶层" class="btn btn-primary" type="button" onClick="gotop();" {if $pid == 0}disabled="true"{/if}>
+                <br/><br/>
+            </div>
+        </div>
+        <div id="mynetwork" ></div>
+        <!--进度条-->
+        <div id="loadingBar">
+            <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                    <div id="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="userModal"><div class="modal-body "></div>
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 480px;">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 class="modal-title">修改会员推荐关系</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="diagram_user_info">
+                        <div>
+                            <label class="pull-left " style="margin-right: 25px">会员信息</label>
+                            <div class="pull-left">
+                                ID: <span id="cur_userid"></span><br>
+                                用户编号: <span id="cur_username"></span><br>
+                                姓名: <span id="cur_nickname"></span><br>
+                                手机号:<span id="cur_usermobile"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">新推荐人</label>
+                        <div class="col-sm-9 col-xs-12">
+                            <input  type="text" id="destuser" class='form-control' data-rule-required="true" autocomplete="off">
+                            <input  type="hidden" id="destuserid" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnMove" class="btn btn-primary btn-submit" type="button" onClick="doMove();">确认修改</button>
+                    <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var arrlevel = [];
+
+    var colors = ['#2570A1','#FFA54F','#00A6AC','#563624','#9D9087','#AE5039','#4F5555','#1D1626','#26dce6','#758ff1','#825bf5','#cf81ff','#ef53e1','#fb4285','#27f91b','#c4f947','#f9ed47','#f5a033','#fd4f25','#8ce0ef'];
+    var curid = '1';
+    var curpid = '1';
+    var currentpage = 1;
+    var regurl = "{:url('admin/user/user/add')}";
+    var durl = "/user/user/diagram?act=recommend";
+    var relationshipurl = "";
+    var loadurl = "./loadtjnet";
+    // alert(durl);
+    var groups = {
+
+        'g': {
+            color: ''
+        },
+
+        'rn':{
+            color:'#F3704B',
+            font: {size: 20, align: 'center',color:'#FFFFFF'}
+        },
+        'notactive':{
+            color:'#cccccc',
+        }
+    }
+
+</script>
+<script src="/assets/js/tjnet/tjnet.js"></script>
+<script src="/assets/js/tjnet/require.js"></script>
+<script type="text/javascript">
+    require.config({
+        paths: {
+            vis: '/assets/js/tjnet/vis.min',
+        }
+    });
+    require(['vis'], function (v) {
+        vis = v;
+        loaddata(curid);
+    });
+    $(function () {
+        $('#keyword').bind('keypress',function(event){
+            if(event.keyCode == "13"){
+                var key = $.trim($('#keyword').val());
+                if(key.length < 2) return;
+                $.ajax({
+                    url:"./netsearch",// 跳转到 action
+                    data:{
+                        rootmid: 0,
+                        keyword: key,
+                        type:'tj'
+                    },
+                    type:'get',
+                    cache:false,
+                    dataType:'json',
+                    success:function(ret) {
+                        if(ret.code == 1 ) {
+                            curid = ret.mid;
+                            loaddata(curid);
+                        }
+                    }
+                })
+            }
+        });
+        $("#destuser").autocomplete({
+            minLength: 2,
+            source:function(request,response){
+                var rootmid = $("#cur_userid").text();
+                url4 = encodeURI("user/user/netsearch&type=tj&rootmid="+rootmid+"&keyword=" + request.term);
+                $.getJSON(url4,function(result){
+                    response($.map(result.data,function(item){
+                        var textval = item.realname;
+                        if(item.mobile != undefined && item.mobile != '') textval += '('+item.mobile + ')';
+                        return({
+                            label:textval,
+                            value:item.id
+                        })
+                    }));
+                });
+            },
+            select: function(event, ui){
+                // ui对象只有一个item属性，对应数据源中被选中的对象
+                if(ui.item.value > 0){
+                    $(this).val(ui.item.label);
+                    $("#destuserid").val(ui.item.value);
+                }
+                // 必须阻止事件的默认行为，否则autocomplete默认会把ui.item.value设为输入框的value值
+                event.preventDefault();
+            }
+        });
+    });
+</script>

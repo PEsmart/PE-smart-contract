@@ -1,0 +1,75 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input name="row[id]" type="hidden" value="{$row.id}">
+            <input readonly id="c-user.username"  data-source="user/index" data-field="username"   data-rule="required" class="form-control"  name="row[uid]" type="text" value="{$row.user.username}">
+        </div>
+</div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-amount" class="form-control" step="0.01" name="row[amount]" type="number" value="{$row.amount}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Addr')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-addr" class="form-control" name="row[addr]" type="text" value="{$row.addr}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Service_charge')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-service_charge" class="form-control" step="0.01" name="row[service_charge]" type="number" value="{$row.service_charge}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Real_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input readonly id="c-real_amount" class="form-control" step="0.01" name="row[real_amount]" type="number" value="{$row.real_amount}">
+        </div>
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label class="control-label col-xs-12 col-sm-2">{:__('Exchange USDT')}:</label>-->
+<!--        <div class="col-xs-12 col-sm-8">-->
+<!--            <input readonly id="c-usdt" class="form-control" step="0.01" name="row[usdt]" type="number" value="{$row.usdt}">-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Createtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  readonly id="c-createtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[createtime]" type="text" value="{$row.createtime|datetime}">
+        </div>
+    </div>
+
+    {if condition="$row.status != 0"}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Approval_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input  readonly id="c-approval_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[approval_time]" type="text" value="{$row.approval_time|datetime}">
+        </div>
+    </div>
+    {/if}
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['-1'=>__('拒绝'), '0'=>__('待审批'), '2'=>__('同意')], $row['status'])}
+        </div>
+    </div>
+
+    {if condition="$row.status == 0"}
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+    {/if}
+</form>

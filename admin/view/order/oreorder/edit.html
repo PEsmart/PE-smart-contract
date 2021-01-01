@@ -1,0 +1,169 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="periods" class="control-label col-xs-12 col-sm-2">{:__('期数')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="periods" data-rule="required" class="form-control" name="row[periods]" type="text" value="{$row.periods}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="ordersn" class="control-label col-xs-12 col-sm-2">{:__('订单编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="ordersn" data-rule="required" class="form-control" name="row[ordersn]" type="text" value="{$row.ordersn}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="orecode" class="control-label col-xs-12 col-sm-2">{:__('编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="orecode" data-rule="required" class="form-control" name="row[orecode]" type="text" value="{$row.orecode}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('等级')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="level" data-rule="required" class="form-control" name="row[level]" type="text" value="{$row.level}">
+        </div>
+        <!--<span class="unit">%</span>-->
+    </div>
+    <div class="form-group">
+        <label for="pcp" class="control-label col-xs-12 col-sm-2">{:__('本金')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="pcp" data-rule="required" class="form-control" name="row[pcp]" type="text" value="{$row.pcp}">
+        </div>
+        <span class="unit">元</span>
+    </div>
+
+    <div class="form-group">
+        <label for="total_money" class="control-label col-xs-12 col-sm-2">{:__('总金额')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="total_money" data-rule="required" class="form-control" name="row[total_money]" type="text" value="{$row.total_money}">
+        </div>
+        <span class="unit">元</span>
+    </div>
+
+    <div class="form-group">
+        <label for="buy_username" class="control-label col-xs-12 col-sm-2">{:__('买家用户编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="buy_username" data-rule="required" class="form-control" name="row[buy_username]" type="text" value="{$row.buy_username}">
+        </div>
+        <!--<span class="unit">元</span>-->
+    </div>
+    <div class="form-group">
+        <label for="sell_username" class="control-label col-xs-12 col-sm-2">{:__('卖家用户编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="sell_username" data-rule="" class="form-control" name="row[sell_username]" type="text" value="{$row.sell_username}">
+        </div>
+        <!--<span class="unit">元</span>-->
+    </div>
+    <div class="form-group">
+        <label for="sell_ordersn" class="control-label col-xs-12 col-sm-2">{:__('卖家订单编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="sell_ordersn" data-rule="" class="form-control" name="row[sell_ordersn]" type="text" value="{$row.sell_ordersn}">
+        </div>
+        <!--<span class="unit">元</span>-->
+    </div>
+    <div class="form-group">
+        <label for="days" class="control-label col-xs-12 col-sm-2">{:__('收益天数')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="days" data-rule="required" class="form-control" name="row[days]" type="text" value="{$row.days}">
+        </div>
+        <span class="unit">天</span>
+    </div>
+    <div class="form-group">
+        <label for="per" class="control-label col-xs-12 col-sm-2">{:__('收益百分比')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="per" data-rule="required" class="form-control" name="row[per]" type="text" value="{$row.per}">
+        </div>
+        <span class="unit"> %</span>
+    </div>
+    <div class="form-group">
+        <label for="credit2" class="control-label col-xs-12 col-sm-2">{:__('可获得'.config('site.credit2_text'))}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="credit2" data-rule="required" class="form-control" name="row[credit2]" type="text" value="{$row.credit2}">
+        </div>
+        <span class="unit">枚</span>
+    </div>
+    <div class="form-group">
+        <label for="credit4_per" class="control-label col-xs-12 col-sm-2">{:__('可获得'.config('site.credit4_text').'百分比(n%/天)')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="credit4_per" data-rule="required" class="form-control" name="row[credit4_per]" type="text" value="{$row.credit4_per}">
+        </div>
+        <span class="unit"> %</span>
+    </div>
+    <div class="form-group">
+        <label for="credit4" class="control-label col-xs-12 col-sm-2">{:__(config('site.credit4_text').'收益')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="credit4" data-rule="required" class="form-control" name="row[credit4]" type="text" value="{$row.credit4}">
+        </div>
+        <!--<span class="unit">元</span>-->
+    </div>
+    <div class="form-group">
+        <label for="credit5" class="control-label col-xs-12 col-sm-2">{:__(config('site.credit5_text').'收益')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="credit5" data-rule="required" class="form-control" name="row[credit5]" type="text" value="{$row.credit5}">
+        </div>
+        <!--<span class="unit">元</span>-->
+    </div>
+
+    <div class="form-group">
+        <label for="due_time" class="control-label col-xs-12 col-sm-2">{:__('到期时间')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="due_time" data-rule="required" class="form-control datetimepicker" placeholder="" name="row[due_time]" type="text" value="{$row['due_time']}">
+            <!--<span>只精确到分钟,年月日忽略</span>-->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('抢购状态')}:</label>
+        <div class="col-xs-12 col-sm-7"  readonly>
+            {:build_radios('row[status]', ['0'=>__('待付款'), '1'=>__('待确认'),'2'=>__('收益中'),'3'=>__('收益完成'),'99'=>__('已失效')], $row['status'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('冻结状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status2]', ['0'=>__('非冻结状态'), '1'=>__('冻结状态')], $row['status2'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('申诉状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status3]', ['0'=>__('非申诉状态'), '1'=>__('申诉中')], $row['status3'])}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('转让状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status4]', ['0'=>__('合约未到期'), '1'=>__('待转让'), '2'=>__('待买家付款'), '3'=>__('买家已付款待确认'), '4'=>__('交易完成')], $row['status4'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('拆分状态')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status5]', ['0'=>__('正常'), '1'=>__('已拆分')], $row['status5'])}
+        </div>
+    </div>
+
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+</form>
+
+

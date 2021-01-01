@@ -1,0 +1,46 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="name" class="control-label col-xs-12 col-sm-2">{:__('Tradesn')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name" data-rule="required" class="form-control" name="row[ordersn]" type="text" value="{$ordersn}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('Unitprice')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="price" data-rule="required" class="form-control" name="row[unitprice]" type="text" value="{$row.unitprice}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="power" class="control-label col-xs-12 col-sm-2">{:__('Number')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="power" data-rule="required" class="form-control" name="row[number]" type="text" value="{$row.number}">
+        </div><span class="unit">%</span>
+    </div>
+    <div class="form-group">
+        <label for="life" class="control-label col-xs-12 col-sm-2">{:__('Servicecharge')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="life" data-rule="required" class="form-control" name="row[servicecharge]" type="text" value="{$row.servicecharge}">
+        </div><span class="unit">天</span>
+    </div>
+    <div class="form-group">
+        <label for="nissan" class="control-label col-xs-12 col-sm-2">{:__('User.name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="nissan" data-rule="required" class="form-control" name="row[user.name]" type="text" value="{$row.user['name']}">
+        </div>
+    </div>
+
+</form>
+
+

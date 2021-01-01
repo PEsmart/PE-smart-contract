@@ -1,0 +1,74 @@
+<style>
+    #unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('level')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <select name="row[level]" class="form-control">
+                {volist name="orelvs" id="lv"}
+                    <option value="{$key}">{$lv}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="orecode" class="control-label col-xs-12 col-sm-2">{:__('orecode')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input readonly id="orecode" data-rule="required" class="form-control" placeholder="请输入{:__(config('site.ore_text'))}编号(必填)" name="row[orecode]" type="text" value="{$orecode['orecode']}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="price" data-rule="required" min="0" class="form-control" name="row[price]" type="number" value="" onblur="nissanFunc()">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ap_username" class="control-label col-xs-12 col-sm-2">{:__('归属用户编号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="ap_username" data-rule="required" min="0" class="form-control" placeholder="归属用户编号" name="row[ap_username]" type="text" value="" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="username" class="control-label col-xs-12 col-sm-2">{:__('username')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="username" data-rule="" min="0" class="form-control" placeholder="请输入用户编号(非必填)" name="row[username]" type="text" value="" >
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('status')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['1'=>__('open'), '0'=>__('close')])}
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function nissanFunc() {
+        var power = document.getElementById('power');
+        var price = document.getElementById('price');
+        var nissan = document.getElementById('nissan');
+
+        nissan.value = (power.value * price.value * 0.01).toFixed(3);
+    }
+</script>

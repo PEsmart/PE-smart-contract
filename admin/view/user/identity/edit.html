@@ -1,0 +1,38 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('level')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="level" min="0" data-rule="required;" placeholder="{:__('Please fill in the grade figures')}" class="form-control" name="row[level]" type="number" value="{$row['level']}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="levelname" class="control-label col-xs-12 col-sm-2">{:__('level name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="levelname" data-rule="required;levelname" class="form-control" placeholder="请输入等级名称" name="row[levelname]" type="text" value="{$row['levelname']}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="levelname_en" class="control-label col-xs-12 col-sm-2">{:__('level english name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="levelname_en" data-rule="required;levelname" class="form-control" placeholder="请输入等级英文名称" name="row[levelname_en]" type="text" value="{$row['levelname_en']}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('open/close')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[enabled]',['1'=>__('open'), '0'=>__('close')],$row['enabled'])}
+        </div>
+    </div>
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

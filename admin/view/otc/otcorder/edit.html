@@ -1,0 +1,61 @@
+<style>
+    .unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="tradesn" class="control-label col-xs-12 col-sm-2">{:__('Tradesn')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="orderid" data-rule="required" class="form-control" name="row[orderid]" type="hidden" value="{$row.id}">
+            <input id="tradesn" data-rule="required" class="form-control" name="row[tradesn]" type="text" readonly value="{$row.tradesn}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="uuname" class="control-label col-xs-12 col-sm-2">{:__('Uuname')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="uuname" data-rule="required" class="form-control" name="row[uuname]" type="text" readonly value="{$row.uuname}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="type" class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input  name="row[type]" type="radio" value="1" disabled <?php if($row['type']==1) echo 'checked'; ?>> 买单
+            <input  name="row[type]" type="radio" value="2" disabled <?php if($row['type']==2) echo 'checked'; ?>> 卖单
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="type" class="control-label col-xs-12 col-sm-2">{:__('State')}:</label>
+        <div class="col-xs-12 col-sm-4"  style="margin-top: 8px;">
+            <span>{$stateArr[$row.state]}</span>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="operation" class="control-label col-xs-12 col-sm-2">{:__('操作')}:</label>
+        <div class="col-xs-12 col-sm-6">
+
+            {:build_radios('row[operation]', $operationArr, $row.operation);}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="a" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+
+</form>
+
+

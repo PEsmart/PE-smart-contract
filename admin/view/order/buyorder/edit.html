@@ -1,0 +1,66 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="ordersn" class="control-label col-xs-12 col-sm-2">{:__('订单号')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="ordersn" data-rule="required" class="form-control" name="row[ordersn]" type="text" value="{$row.ordersn}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="username" class="control-label col-xs-12 col-sm-2">{:__('用户名')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="username" data-rule="required" class="form-control" name="row[username]" type="text" value="{$row.username}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sell_id" class="control-label col-xs-12 col-sm-2">{:__('卖家订单ID')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="sell_id" data-rule="required" class="form-control" name="row[sell_id]" type="number" value="{$row.sell_id}" readonly>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="num" class="control-label col-xs-12 col-sm-2">{:__('数量')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="num" data-rule="required" class="form-control" name="row[num]" type="number" value="{$row.num}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="price" class="control-label col-xs-12 col-sm-2">{:__('单价')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="price" data-rule="required" class="form-control" name="row[price]" type="number" value="{$row.price}" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="total_money" class="control-label col-xs-12 col-sm-2">{:__('总金额')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="total_money" data-rule="required" class="form-control" name="row[total_money]" type="number" value="{$row.total_money}" readonly>
+        </div>
+    </div>
+
+
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('订单状态')}:</label>
+        <div class="col-xs-12 col-sm-7"  readonly>
+            {:build_radios('row[status]', ['-1'=>__('已失效'), '0'=>__('已创建'),'1'=>__('待处理'),'2'=>__('已完成')], $row['status'])}
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+
+
+    </div>
+
+</form>

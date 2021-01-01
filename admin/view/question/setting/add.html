@@ -1,0 +1,58 @@
+<form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="c-type" class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+
+
+         <select id="c-type" data-rule="required" class="form-control selectpicker" name="row[category_id]">
+                {foreach name="typeList" item="vo"}
+                <option value="{$vo['id']}">{$vo['name']}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+
+
+    
+    <div class="form-group">
+        <label for="title" class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="title" name="row[title]" value="" data-rule="required;title" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="title" class="control-label col-xs-12 col-sm-2">{:__('title_en')}:</label>
+        <div class="col-xs-12 col-sm-9">
+            <input type="text" class="form-control" id="title_en" name="row[title_en]" value="" data-rule="required;title_en" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="contents" class="control-label col-xs-12 col-sm-2">{:__('contents')}:</label>
+        <div class="col-xs-12 col-sm-9">
+            <textarea class="form-control editor" rows="15" id="contents" name="row[contents]" data-rule="required;contents" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="contents" class="control-label col-xs-12 col-sm-2">{:__('contents_en')}:</label>
+        <div class="col-xs-12 col-sm-9">
+            <textarea class="form-control editor" rows="15" id="contents_en" name="row[contents_en]" data-rule="required;contents_en" ></textarea>
+        </div>
+    </div>
+
+
+    <div class="form-group hidden layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

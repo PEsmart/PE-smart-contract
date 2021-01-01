@@ -1,0 +1,24 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="num" class="control-label col-xs-12 col-sm-2">{:__('num')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="num" min="0"  placeholder="{:__('Please fill in the grade figures')}" class="form-control" name="row[num]" type="number" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('open/close')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]',['1'=>__('open'), '0'=>__('close')],$row['status'])}
+        </div>
+    </div>
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

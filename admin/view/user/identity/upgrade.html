@@ -1,0 +1,32 @@
+<form style="font-size:18px;" id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="./upgrade">
+    {volist  name="levels" id="val"}
+         {if $val['level'] >= 0}
+        <div class="form-group form-control" style="height: 48px;padding-top: 10px;font-size:14px;" >
+            <div class="col-xs-12 col-sm-12">
+                <span style="display: inline-block;width:180px;text-align: right;"><b>{$val['levelname']}：</b></span>
+                <span>会员等级大于等于</span>
+                <select name="identityup[level_{$val['level']}]" id="">
+                    {volist name="ulvs" id = 'lv'}
+                        <option value="{$lv['level']}" {if isset($levelup['level_'.$val['level']]) && $levelup['level_'.$val['level']]== $lv['level']}selected{/if}>{$lv['levelname']}</option>
+                    {/volist}
+                </select>
+                <!--<input type="number" style="padding-left: 5px;" name="levelup[zhlj_{$val['level']}]" value="{:isset($levelup['zhlj_'.$val['level']])?$levelup['zhlj_'.$val['level']]:0}" />-->
+                <span>级别，且业绩达到</span>
+                <input type="number" style="padding-left: 5px;" name="identityup[usdt_num_{$val['level']}]" value="{:isset($levelup['usdt_num_'.$val['level']])?$levelup['usdt_num_'.$val['level']]:0}" />
+                <span>{:__(config('site.credit2_text'))},且自身锁定{:__(config('site.credit1_text'))}币数量达到</span>
+                <input type="number" style="padding-left: 5px;" name="identityup[fc_num_{$val['level']}]" value="{:isset($levelup['fc_num_'.$val['level']])?$levelup['fc_num_'.$val['level']]:0}" />
+                <span>枚</span>
+            </div>
+        </div>
+        {/if}
+    {/volist}
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

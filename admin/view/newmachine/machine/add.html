@@ -1,0 +1,120 @@
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="name" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name" data-rule="required" class="form-control" name="row[name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name_en" class="control-label col-xs-12 col-sm-2">{:__('Name_en')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name_en" data-rule="required" class="form-control" name="row[name_en]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name_tw" class="control-label col-xs-12 col-sm-2">{:__('Name_tw')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="name_tw" data-rule="required" class="form-control" name="row[name_tw]" type="text" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="dprice" class="control-label col-xs-12 col-sm-2">{:__('Floor Price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="dprice" data-rule="required" class="form-control" name="row[dprice]" type="number" value="" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uprice" class="control-label col-xs-12 col-sm-2">{:__('Peak Price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="uprice" data-rule="required" class="form-control" name="row[uprice]" type="number" value="" >
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="workstatus" class="control-label col-xs-12 col-sm-2">{:__('Workstatus')}:(%)</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="workstatus" data-rule="required" class="form-control" name="row[workstatus]" min="0"  max='100' type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="bhstatus" class="control-label col-xs-12 col-sm-2">{:__('Saturated mode')}:(%)</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="bhstatus" data-rule="required" class="form-control" name="row[bhstatus]" min="0"  max='100' type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="peice" class="control-label col-xs-12 col-sm-2">{:__('Residual share')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="peice" data-rule="required" class="form-control" name="row[peice]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="line" class="control-label col-xs-12 col-sm-2">{:__('Remaining threads')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="line" data-rule="required" class="form-control" name="row[line]" type="text" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="nissan" class="control-label col-xs-12 col-sm-2">{:__('comment')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <textarea id="comment" data-rule=""  cols="50" rows="6"  name="row[comment]" type="text" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nissan" class="control-label col-xs-12 col-sm-2">{:__('comment_en')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <textarea id="comment_en" data-rule=""  cols="50" rows="6"  name="row[comment_en]" type="text" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nissan" class="control-label col-xs-12 col-sm-2">{:__('comment_tw')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <textarea id="comment_tw" data-rule=""  cols="50" rows="6"  name="row[comment_tw]" type="text" ></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="radio" name="row[status]" value="1" checked>   {:__('Normal')}
+            <input type="radio" name="row[status]" value="0">   {:__('Hidden')}
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="uprice" class="control-label col-xs-12 col-sm-2">{:__('Machine detail')}:</label><br>
+        <button type="button" id="adddetail" >{:__('Add')}</button>
+        <button type="button" id="deldetail">{:__('Del')}</button>
+        <div id="container" style="margin-left:18%">
+            <div id="box" >
+                {:__('Set cycle')}<input id="day[]" data-rule="required" class="" name="row[day][]" type="number" value="">
+                {:__('Day netincome')} <input id="netincome[]" data-rule="required" class="" name="row[netincome][]" type="number" value="">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+
+<script src="/assets/js/tjnet/jquery-1.7.2.js"></script>
+<script src="/assets/js/tjnet/jquery-ui-1.10.3.min.js"></script>
+<script>
+    //简单的添加删除
+    $("#adddetail").click(function () {
+        clone=$("#box").clone();
+        $(clone).children('input').val('')
+        $("#container").append(clone)
+    })
+    $("#deldetail").click(function(){
+        let len=$("#container").children('div').length -1;
+        if (len==0)return;
+        $("#container").children('div').eq(len).remove()
+    })
+</script>

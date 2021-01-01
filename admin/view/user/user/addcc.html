@@ -1,0 +1,51 @@
+<div class="form-group">
+
+
+    <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+        <div class="form-group" style="vertical-align: middle;">
+            <label for="c-csell" class="control-label col-xs-12 col-sm-2">{:__('credit1_info')}:</label>
+            <label for="c-csell" class="control-label col-xs-12 col-sm-3" style="text-align: left;">{$row.credit1}</label>
+        </div>
+        <div class="form-group">
+            <label for="c-csell" class="control-label col-xs-12 col-sm-2">{:__('credit2_info')}:</label>
+            <label for="c-csell" class="control-label col-xs-12 col-sm-3" style="text-align: left;">{$row.credit2}</label>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="c-csell" class="control-label col-xs-12 col-sm-2">{:__('credit4_info')}:</label>-->
+            <!--<label for="c-csell" class="control-label col-xs-12 col-sm-3" style="text-align: left;">{$row.credit4}</label>-->
+        <!--</div>-->
+
+        <input type="hidden" name="row[id]" value="{$row.id}">
+        <input type="hidden" name="row[credit1]" value="{$row.credit1}">
+        <input type="hidden" name="row[credit2]" value="{$row.credit2}">
+        <!--<input type="hidden" name="row[credit4]" value="{$row.credit4}">-->
+        <div class="form-group">
+            <label for="c-addnum" class="control-label col-xs-12 col-sm-2">{:__('addnumtype')}:</label>
+            <div class="col-xs-12 col-sm-4">
+                <input id="c-addcc"  name="row[credit]" type="radio" value="1" checked>{:__('credit1_text')}
+                <input id="c-addcc"  name="row[credit]" type="radio" value="2">{:__('credit2_text')}
+                <!--<input id="c-addcc"  name="row[credit]" type="radio" value="4">{:__('credit4_text')}-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="c-addnum" class="control-label col-xs-12 col-sm-2">{:__('change')}:</label>
+            <div class="col-xs-12 col-sm-4">
+                <input id="c-addcc"  name="row[addcc]" type="radio" value="1" checked>增加
+                <input id="c-addcc"  name="row[addcc]" type="radio" value="2">减少
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="c-addnum" class="control-label col-xs-12 col-sm-2">{:__('addnum')}:</label>
+            <div class="col-xs-12 col-sm-4">
+                <input id="c-addnum" data-rule="required" class="form-control" name="row[addnum]" type="text" value="">
+            </div>
+        </div>
+        <div class="form-group layer-footer">
+            <label class="control-label col-xs-12 col-sm-2"></label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="submit" class="btn btn-success btn-embossed ">{:__('OK')}</button>
+                <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+            </div>
+        </div>
+    </form>
+</div>

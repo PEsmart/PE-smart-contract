@@ -1,0 +1,82 @@
+<form id="add-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+
+    <!--注册积分-->
+    <div class="form-group">
+        <label for="reg_jf" class="control-label col-xs-12 col-sm-2">{:__('Registered ore conveyor')}</label>
+        <div class="col-xs-12 col-sm-5">
+            <input type="number" class="form-control" id="reg_jf" name="sys[reg_jf]" value="<?php echo isset($sys['reg_jf'])?$sys['reg_jf']:0;?>" data-rule="" />
+        </div>
+    </div>
+
+    <!--币种手续费-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2"><b>{:__('Currency charges')}</b></label>
+    </div>
+    <!--矿机-->
+    <div class="form-group">
+        <label for="credit1" class="control-label col-xs-12 col-sm-2">{:__('Mining machine')}(%)</label>
+        <div class="col-xs-12 col-sm-5">
+            <input type="number" class="form-control" min="0" style="display: inline-block;" id="credit1" name="sys[credit1]" value="<?php echo isset($sys['credit1'])?$sys['credit1']:0;?>" data-rule="" />
+        </div>
+    </div>
+    <!--区块Mine-->
+    <div class="form-group">
+        <label for="credit2" class="control-label col-xs-12 col-sm-2">{:__('Block Mine')}(%)</label>
+        <div class="col-xs-12 col-sm-5">
+            <input type="number" class="form-control" min="0" style="display: inline-block;" id="credit2" name="sys[credit2]" value="<?php echo isset($sys['credit2'])?$sys['credit2']:0;?>" data-rule="" />
+        </div>
+    </div>
+    <!--矿链-->
+    <div class="form-group">
+        <label for="credit3" class="control-label col-xs-12 col-sm-2">{:__('Ore chain')}(%)</label>
+        <div class="col-xs-12 col-sm-5">
+            <input type="number" class="form-control" min="0" style="display: inline-block;" id="credit3" name="sys[credit3]" value="<?php echo isset($sys['credit3'])?$sys['credit3']:0;?>" data-rule="" />
+        </div>
+    </div>
+    <!--doge-->
+    <div class="form-group">
+        <label for="credit4" class="control-label col-xs-12 col-sm-2">{:__('DOGE')}(%)</label>
+        <div class="col-xs-12 col-sm-5">
+            <input type="number" class="form-control" min="0" style="display: inline-block;" id="credit4" name="sys[credit4]" value="<?php echo isset($sys['credit4'])?$sys['credit4']:0;?>" data-rule="" />
+        </div>
+    </div>
+
+
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-7">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+
+
+    <!--上传图片-->
+    <!--<div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('upimgs')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="" class="form-control" size="50" name="row[images]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span>
+                        <button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button>
+                    </span>
+                    <span>
+                        <button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Select')}</button>
+                    </span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('status')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['0'=>__('untreated'), '1'=>__('processed')])}
+        </div>
+    </div>-->
+
+</form>

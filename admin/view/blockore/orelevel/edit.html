@@ -1,0 +1,135 @@
+<style>
+    #unit {
+        display: inline-block;
+        height: 31px;
+        line-height: 31px;
+    }
+</style>
+
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="level" class="control-label col-xs-12 col-sm-2">{:__('level')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="level" data-rule="" min="0" class="form-control" placeholder="请输入等级数字" name="row[level]" type="number" value="{$row['level']}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="levelname" class="control-label col-xs-12 col-sm-2">{:__('level name')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="levelname" data-rule="required" class="form-control" placeholder="请输入等级名称" name="row[levelname]" type="text" value="{$row['levelname']}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="min_price" class="control-label col-xs-12 col-sm-2">{:__('Minimum price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="min_price" data-rule="required" min="0" class="form-control" placeholder="请输入最小价格" name="row[min_price]" type="number" value="{$row['min_price']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">元</span>
+    </div>
+    <div class="form-group">
+        <label for="max_price" class="control-label col-xs-12 col-sm-2">{:__('Maximum price')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="max_price" data-rule="required" min="0" class="form-control" placeholder="请输入最大价格" name="row[max_price]" type="text" value="{$row['max_price']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">元</span>
+    </div>
+    <div class="form-group">
+        <label for="stime" class="control-label col-xs-12 col-sm-2">{:__('start time')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="stime" data-rule="required" class="form-control datetimepicker" placeholder="请选择开始时间" name="row[stime]" type="text" value="{$row['stime']}" onblur="nissanFunc()">
+            <span>只精确到分钟,年月日忽略</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="etime" class="control-label col-xs-12 col-sm-2">{:__('end time')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="etime" data-rule="required" class="form-control datetimepicker" placeholder="请选择结束时间" name="row[etime]" type="text" value="{$row['etime']}" onblur="nissanFunc()">
+            <span>只精确到分钟,年月日忽略</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="money" class="control-label col-xs-12 col-sm-2">{:__('Reservation of required miners')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="money" data-rule="required" min="0" class="form-control" placeholder="请输入预约所需{:__(config('site.credit1_text'))}" name="row[money]" type="number" value="{$row['money']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">{:__(config('site.credit1_text'))}</span>
+    </div>
+    <div class="form-group">
+        <label for="money2" class="control-label col-xs-12 col-sm-2">{:__('Not reservation of required miners')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="money2" data-rule="required" min="0" class="form-control" placeholder="请输入非预约所需{:__(config('site.credit1_text'))}" name="row[money2]" type="number" value="{$row['money2']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">{:__(config('site.credit1_text'))}</span>
+    </div>
+    <div class="form-group">
+        <label for="days" class="control-label col-xs-12 col-sm-2">{:__('Income days')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="days" data-rule="required" min="0" class="form-control" placeholder="请输入收益天数" name="row[days]" type="number" value="{$row['days']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">天</span>
+    </div>
+    <div class="form-group">
+        <label for="per" class="control-label col-xs-12 col-sm-2">{:__('Percentage of Income')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="per" data-rule="required" min="0" class="form-control" placeholder="请输入收益百分比" name="row[per]" type="number" value="{$row['per']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">%</span>
+    </div>
+    <div class="form-group">
+        <label for="credit2" class="control-label col-xs-12 col-sm-2">{:__('Digable block Mine')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="credit2" data-rule="required" min="0" class="form-control" placeholder="请输入可获得{:__(config('site.credit2_text'))}" name="row[credit2]" type="number" value="{$row['credit2']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">枚</span>
+    </div>
+    <div class="form-group">
+        <label for="credit4" class="control-label col-xs-12 col-sm-2">{:__('Digable block DOGE')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input id="credit4" data-rule="required" min="0" class="form-control" placeholder="请输入可获得{:__(config('site.credit4_text'))}" name="row[credit4]" type="number" value="{$row['credit4']}" onblur="nissanFunc()">
+        </div>
+        <span id="unit">%/天</span>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('status')}:</label>
+        <div class="col-xs-12 col-sm-7">
+            {:build_radios('row[status]', ['1'=>__('open'), '0'=>__('close')], $row['status'])}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-avatar" class="control-label col-xs-12 col-sm-2">{:__('Images')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-avatar" data-rule="" class="form-control" size="50" name="row[images]" type="text" value="{$row['images']}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-avatar" class="btn btn-danger plupload" data-input-id="c-avatar" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-avatar" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-avatar"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="status" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function nissanFunc() {
+        var power = document.getElementById('power');
+        var price = document.getElementById('price');
+        var nissan = document.getElementById('nissan');
+
+        nissan.value = (power.value * price.value * 0.01).toFixed(3);
+    }
+</script>
